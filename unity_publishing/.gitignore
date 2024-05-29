@@ -1,0 +1,11 @@
+Library
+Logs
+Packages
+Temp
+UserSettings
+ProjectSettings
+.vsconfig
+holbertonschool-*.sln
+Billing*.json*
+UnityPackageManager
+*Settings*
