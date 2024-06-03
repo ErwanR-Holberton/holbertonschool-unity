@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             moveHorizontal = 1f;
 
-        Vector3 newPosition = new Vector3(moveVertical, 0.0f, -moveHorizontal) * speed * Time.deltaTime;
+        Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed * Time.deltaTime;
 
 
         if (isGrounded)
@@ -47,6 +47,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             isGrounded = false;
+
+        if (transform.position.y < -20)
+        {
+            transform.position = new Vector3(0, 20, 0);
+        }
 
     }
 
