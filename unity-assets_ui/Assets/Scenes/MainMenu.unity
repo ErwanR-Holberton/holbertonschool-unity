@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 1281317077}
   - component: {fileID: 1281317076}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,8 +775,8 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: -4928742352451709002, guid: c2514a27467778e42babc462d07dc20e, type: 3}
     m_PressedSprite: {fileID: -3044749665540109536, guid: c2514a27467778e42babc462d07dc20e, type: 3}
-    m_SelectedSprite: {fileID: 420714208305049663, guid: c2514a27467778e42babc462d07dc20e, type: 3}
-    m_DisabledSprite: {fileID: 420714208305049663, guid: c2514a27467778e42babc462d07dc20e, type: 3}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
