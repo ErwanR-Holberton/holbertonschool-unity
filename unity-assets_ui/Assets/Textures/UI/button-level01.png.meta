@@ -145,7 +145,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button-level01 1_0
+      name: button-level01_1
       rect:
         serializedVersion: 2
         x: 592
@@ -166,11 +166,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-level01 1_1
+      name: button-level01_2
       rect:
         serializedVersion: 2
         x: 1197
-        y: 0
+        y: 2
         width: 603
         height: 648
       alignment: 0
@@ -218,9 +218,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      button-level01 1_0: -4928742352451709002
-      button-level01 1_1: -3044749665540109536
       button-level01_0: 420714208305049663
+      button-level01_1: -4928742352451709002
+      button-level01_2: -3044749665540109536
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
