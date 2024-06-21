@@ -2170,6 +2170,7 @@ GameObject:
   - component: {fileID: 1960276159}
   - component: {fileID: 1960276158}
   - component: {fileID: 1960276157}
+  - component: {fileID: 1960276161}
   m_Layer: 5
   m_Name: OptionsCanvas
   m_TagString: Untagged
@@ -2266,6 +2267,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1960276161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960276156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406921350d218a947a1553dca4fae060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1991990573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,6 +2455,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1960276160}
     m_Modifications:
+    - target: {fileID: 394611882042162125, guid: c4bcfa40d45887e42b3834cfb70609fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 394611882042162125, guid: c4bcfa40d45887e42b3834cfb70609fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 394611882042162125, guid: c4bcfa40d45887e42b3834cfb70609fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1960276161}
+    - target: {fileID: 394611882042162125, guid: c4bcfa40d45887e42b3834cfb70609fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 394611882042162125, guid: c4bcfa40d45887e42b3834cfb70609fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 394611882042162125, guid: c4bcfa40d45887e42b3834cfb70609fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 394611882042162125, guid: c4bcfa40d45887e42b3834cfb70609fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1484920295402964904, guid: c4bcfa40d45887e42b3834cfb70609fa, type: 3}
       propertyPath: m_Name
       value: BackButton
@@ -2610,7 +2651,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8824046693095279521, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -150
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8824046693095279521, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
       propertyPath: m_AnchoredPosition.y
