@@ -11,7 +11,9 @@ public class MainMenu : MonoBehaviour
     }
     public void LevelSelect(int level)
     {
-        SceneManager.LoadScene("Level" + level.ToString("D2"));
+        string name = "Level" + level.ToString("D2");
+        PlayerPrefs.SetString("previous_scene", name);
+        SceneManager.LoadScene(name);
     }
     public void Options()
     {

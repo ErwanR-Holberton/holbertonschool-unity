@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public Timer timerScript;
     public GameObject canvas;
     private bool pause = false;
+
+    public void Start()
+    {
+        Time.timeScale = 1f;
+    }
 
     void Update()
     {
@@ -33,5 +39,17 @@ public class PauseMenu : MonoBehaviour
         timerScript.enabled = true;
         canvas.SetActive(false);
         pause = false;
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void Options()
+    {
+        SceneManager.LoadScene("Options");
     }
 }
