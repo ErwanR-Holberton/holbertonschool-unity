@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    public Transform playerTransform; // Reference to the player's Transform
+    private Transform playerTransform; // Reference to the player's Transform
     public float rotationSpeed = 5.0f; // Speed of camera rotation
 
     private Vector3 initialOffset; // Initial offset between the player and the camera
@@ -15,6 +15,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Start()
     {
+        playerTransform = GameObject.Find("Player").GetComponent<Transform>();
         isInverted = PlayerPrefs.GetInt("isInverted", 0) == 1; //false by default
 
         initialOffset = transform.position - playerTransform.position;

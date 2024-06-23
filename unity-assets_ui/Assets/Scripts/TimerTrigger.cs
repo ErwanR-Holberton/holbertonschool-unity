@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class TimerTrigger : MonoBehaviour
 {
-    public Timer timerScript; // Reference to the Timer script on the player
+    private Timer timerScript; // Reference to the Timer script on the player
 
 
-    void Update()
+    void Start()
     {
+        timerScript = GameObject.Find("Player").GetComponent<Timer>();
     }
 
     void OnTriggerExit(Collider other)
