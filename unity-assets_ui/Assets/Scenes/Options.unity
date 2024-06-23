@@ -2589,6 +2589,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: ApplyButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3497088414581003886, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497088414581003886, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497088414581003886, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1960276161}
+    - target: {fileID: 3497088414581003886, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497088414581003886, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Apply
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497088414581003886, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OptionsMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3497088414581003886, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8824046693095279521, guid: 6583657d8e5fc4647a64d3a45e2fe922, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
