@@ -13520,6 +13520,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421742448}
   m_Mesh: {fileID: 5709895401514035297, guid: a75a06affead7ec45936313eb3cd9890, type: 3}
+--- !u!4 &1424736493 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2736661170565320586, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+  m_PrefabInstance: {fileID: 3005802074737216795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1426621037
 GameObject:
   m_ObjectHideFlags: 0
@@ -20598,6 +20603,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2016682944203065991, guid: ecbdbf4cff758c2439391be7ed5a8a73, type: 3}
+      propertyPath: tyTransform
+      value: 
+      objectReference: {fileID: 1424736493}
+    - target: {fileID: 2016682944203065991, guid: ecbdbf4cff758c2439391be7ed5a8a73, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1743233199}
@@ -20735,6 +20744,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2736661170565320586, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736661170565320586, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2736661170565320586, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5936258990950946157, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -20783,6 +20804,10 @@ PrefabInstance:
       propertyPath: TimerText
       value: 
       objectReference: {fileID: 1769591637}
+    - target: {fileID: 8294150576524711408, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b5ff5df2583d2354983af4150e3338fb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
