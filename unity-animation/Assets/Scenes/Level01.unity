@@ -20731,6 +20731,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 54551778}
+    - target: {fileID: 1701686349362403926, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5936258990950946157, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
       propertyPath: m_Name
       value: Player
@@ -20775,10 +20779,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8267592065042168561, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
-      propertyPath: test
-      value: 
-      objectReference: {fileID: 1769591637}
     - target: {fileID: 8267592065042168561, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
       propertyPath: TimerText
       value: 
