@@ -321,6 +321,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3119220321572913762, guid: 8fda1b6a2b962b9429c34a4de4e2a572, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 701115004224669604, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+    - target: {fileID: 3119220321572913762, guid: 8fda1b6a2b962b9429c34a4de4e2a572, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243342753868833669, guid: 8fda1b6a2b962b9429c34a4de4e2a572, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 701115004224669604, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+    - target: {fileID: 5243342753868833669, guid: 8fda1b6a2b962b9429c34a4de4e2a572, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 5437216172054878518, guid: 8fda1b6a2b962b9429c34a4de4e2a572, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 701115004224669604, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+    - target: {fileID: 5437216172054878518, guid: 8fda1b6a2b962b9429c34a4de4e2a572, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932960849914623630, guid: 8fda1b6a2b962b9429c34a4de4e2a572, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 701115004224669604, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
+    - target: {fileID: 5932960849914623630, guid: 8fda1b6a2b962b9429c34a4de4e2a572, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Options
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
