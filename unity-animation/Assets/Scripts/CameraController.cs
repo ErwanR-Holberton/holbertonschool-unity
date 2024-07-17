@@ -16,6 +16,7 @@ public class PlayerCamera : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+
         isInverted = PlayerPrefs.GetInt("isInverted", 0) == 1; //false by default
 
         initialOffset = transform.position - playerTransform.position;
@@ -34,7 +35,7 @@ public class PlayerCamera : MonoBehaviour
         pitch = Mathf.Clamp(pitch, -89f, 89f); // Clamp the pitch to avoid flipping the camera
 
         Quaternion desiredRotation = Quaternion.Euler(pitch, yaw, 0.0f);
-        playerTransform.rotation = Quaternion.Euler(0, yaw, 0);
+        //playerTransform.rotation = Quaternion.Euler(0, yaw, 0);
 
         // Calculate the new offset based on the player's rotation
         Vector3 rotatedOffset = desiredRotation * initialOffset;
@@ -42,5 +43,17 @@ public class PlayerCamera : MonoBehaviour
         transform.position = playerTransform.position + rotatedOffset;
         // Set the camera rotation
         transform.rotation = desiredRotation;
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            RotatePlayer(-rotationSpeed);
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            RotatePlayer(rotationSpeed);
+    }
+
+    private void RotatePlayer(float rotationAmount)
+    {
+        Vector3 currentEulerAngles = playerTransform.eulerAngles;
+        currentEulerAngles.y += rotationAmount;
+        playerTransform.eulerAngles = currentEulerAngles;
     }
 }

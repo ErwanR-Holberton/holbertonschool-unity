@@ -10,15 +10,10 @@ public class WinTrigger : MonoBehaviour
     private Text timerText; // Reference to the Text component
     public GameObject WinCanvas;
 
-    void Start()
+    void OnTriggerEnter(Collider other)
     {
         timerScript = GameObject.Find("Player").GetComponent<Timer>();
         timerText = GameObject.Find("TimerText").GetComponent<Text>();
-    }
-
-
-    void OnTriggerEnter(Collider other)
-    {
         PauseMenu pauseMenu = GameObject.Find("Player").GetComponent<PauseMenu>();
         pauseMenu.enabled = false;
         Time.timeScale = 0f;
