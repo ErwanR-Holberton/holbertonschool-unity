@@ -20732,30 +20732,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224704007010332220, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 701115004224669604, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
       propertyPath: canvas
       value: 
       objectReference: {fileID: 54551778}
-    - target: {fileID: 1701686349362403926, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2736661170565320586, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2736661170565320586, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2736661170565320586, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5936258990950946157, guid: bc4ce7fe47778bc489cc4de3c3c98ac6, type: 3}
       propertyPath: m_Name
       value: Player
