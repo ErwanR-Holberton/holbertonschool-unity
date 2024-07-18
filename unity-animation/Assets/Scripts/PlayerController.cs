@@ -15,13 +15,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Transform tyTransform = transform.Find("ty");
         if (tyTransform != null)
-        {
             animator = tyTransform.GetComponent<Animator>();
-            if (animator != null)
-                Debug.Log("Animator found and assigned.");
-            else
-                Debug.LogError("No Animator component found on the 'ty' child.");
-        }
         else
             Debug.LogError("'ty' child not found.");
 
@@ -69,10 +63,16 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, -transform.up, out hit, 1.1f))
         {
             if (!hit.collider.CompareTag("Player"))
+            {
                 isGrounded = true;
+                animator.SetBool("IsGrounded", true);
+            }
         }
         else
+        {
             isGrounded = false;
+            animator.SetBool("IsGrounded", false);
+        }
 
         if (transform.position.y < -20)
         {
