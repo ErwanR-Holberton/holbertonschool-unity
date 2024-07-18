@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 5.0f; // Force applied when the player jumps
     private bool isGrounded; // To check if the player is on the ground
     private Rigidbody rb; // Reference to the player's Rigidbody component
-    private float rotationSpeed = 5f;
+    private float rotationSpeed = 1f;
     private Animator animator;
 
     void Start()
