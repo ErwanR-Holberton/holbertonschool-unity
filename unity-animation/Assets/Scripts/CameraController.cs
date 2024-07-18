@@ -44,16 +44,6 @@ public class PlayerCamera : MonoBehaviour
         // Set the camera rotation
         transform.rotation = desiredRotation;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            RotatePlayer(-rotationSpeed);
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            RotatePlayer(rotationSpeed);
     }
 
-    private void RotatePlayer(float rotationAmount)
-    {
-        Vector3 currentEulerAngles = playerTransform.eulerAngles;
-        currentEulerAngles.y += rotationAmount;
-        playerTransform.eulerAngles = currentEulerAngles;
-    }
 }

@@ -8,9 +8,23 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 5.0f; // Force applied when the player jumps
     private bool isGrounded; // To check if the player is on the ground
     private Rigidbody rb; // Reference to the player's Rigidbody component
+    private float rotationSpeed = 5f;
+    private Animator animator;
 
     void Start()
     {
+        Transform tyTransform = transform.Find("ty");
+        if (tyTransform != null)
+        {
+            animator = tyTransform.GetComponent<Animator>();
+            if (animator != null)
+                Debug.Log("Animator found and assigned.");
+            else
+                Debug.LogError("No Animator component found on the 'ty' child.");
+        }
+        else
+            Debug.LogError("'ty' child not found.");
+
         rb = GetComponent<Rigidbody>();
     }
 
@@ -18,15 +32,27 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveHorizontal = 0f;
         float moveVertical = 0f;
+        animator.SetBool("IsMoving", false);
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             moveVertical = 1f;
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             moveVertical = -1f;
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
             moveHorizontal = -1f;
+        }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
             moveHorizontal = 1f;
+        }
+        if (moveHorizontal != 0 || moveVertical != 0)
+            animator.SetBool("IsMoving", true);
+
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            RotatePlayer(-rotationSpeed);
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            RotatePlayer(rotationSpeed);
 
         Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed * Time.deltaTime;
 
@@ -53,6 +79,14 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(0, 20, 0);
         }
 
+    }
+
+
+    private void RotatePlayer(float rotationAmount)
+    {
+        Vector3 currentEulerAngles = transform.eulerAngles;
+        currentEulerAngles.y += rotationAmount;
+        transform.eulerAngles = currentEulerAngles;
     }
 
 }
