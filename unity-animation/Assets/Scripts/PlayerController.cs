@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isGrounded = true;
                 animator.SetBool("IsGrounded", true);
+                animator.SetBool("IsFalling", false);
             }
         }
         else
@@ -76,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (transform.position.y < -20)
         {
+            animator.SetBool("IsFalling", true);
             transform.position = new Vector3(0, 20, 0);
         }
 
