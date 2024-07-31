@@ -78,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!hit.collider.CompareTag("Player"))
             {
+                if (!isGrounded && animator.GetBool("IsFalling"))
+                    Sound_script.IsLanding = true;
                 isGrounded = true;
                 animator.SetBool("IsGrounded", true);
                 animator.SetBool("IsFalling", false);
