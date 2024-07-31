@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5.0f; // Speed of the player movement
+    public float speed = 1.0f; // Speed of the player movement
     public float jumpForce = 5.0f; // Force applied when the player jumps
     private bool isGrounded; // To check if the player is on the ground
     private Rigidbody rb; // Reference to the player's Rigidbody component
-    private float rotationSpeed = 1f;
+    //private float rotationSpeed = 1f;
     private Animator animator;
+    private Camera mainCamera;
+
+    private Sounds Sound_script;
 
     void Start()
     {
+        mainCamera = Camera.main;
+        Sound_script = GameObject.Find("SFX").GetComponent<Sounds>();
+
         Transform tyTransform = transform.Find("ty");
         if (tyTransform != null)
             animator = tyTransform.GetComponent<Animator>();
@@ -43,12 +49,20 @@ public class PlayerMovement : MonoBehaviour
         if (moveHorizontal != 0 || moveVertical != 0)
             animator.SetBool("IsMoving", true);
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-            RotatePlayer(-rotationSpeed);
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-            RotatePlayer(rotationSpeed);
+        //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            //RotatePlayer(-rotationSpeed);
+        //if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            //RotatePlayer(rotationSpeed);
+        Vector3 cameraForward = mainCamera.transform.forward;
+        Vector3 cameraRight = mainCamera.transform.right;
+        cameraForward.y = 0;
+        cameraRight.y = 0;
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+        Vector3 desiredMoveDirection = cameraForward * moveVertical + cameraRight * moveHorizontal;
 
-        Vector3 newPosition = new Vector3(moveHorizontal, 0.0f, moveVertical) * speed * Time.deltaTime;
+        if (desiredMoveDirection != Vector3.zero)
+            transform.rotation = Quaternion.LookRotation(cameraForward);
 
 
         if (isGrounded)
@@ -57,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        transform.Translate(newPosition);
+        transform.position = transform.position + desiredMoveDirection * speed * Time.deltaTime;
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit, 1.1f))
@@ -67,6 +81,14 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = true;
                 animator.SetBool("IsGrounded", true);
                 animator.SetBool("IsFalling", false);
+
+                Material material = hit.collider.GetComponent<Renderer>().material;
+
+                if (material.name == "Grass (Instance)")
+                    Sound_script.surface = "Grass";
+                else
+                    Sound_script.surface = "not grass";
+
             }
         }
         else
