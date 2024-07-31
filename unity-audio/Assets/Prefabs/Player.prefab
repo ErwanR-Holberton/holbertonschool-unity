@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 224704007010332220}
   - component: {fileID: 8267592065042168561}
   - component: {fileID: 701115004224669604}
+  - component: {fileID: 2763835722395868293}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -180,6 +181,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerScript: {fileID: 8267592065042168561}
   canvas: {fileID: 0}
+  snapshot_normal: {fileID: 24500006, guid: 073c8429d4a1d7c418b907c5b250e0cc, type: 2}
+  snapshot_pause: {fileID: -8581921407562944771, guid: 073c8429d4a1d7c418b907c5b250e0cc, type: 2}
+--- !u!81 &2763835722395868293
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5936258990950946157}
+  m_Enabled: 0
 --- !u!1001 &2481531398198650977
 PrefabInstance:
   m_ObjectHideFlags: 0
