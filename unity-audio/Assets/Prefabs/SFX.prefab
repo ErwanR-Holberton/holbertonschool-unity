@@ -434,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surface: 
   IsLanding: 0
+  audioMixer: {fileID: 24100000, guid: 073c8429d4a1d7c418b907c5b250e0cc, type: 2}
 --- !u!1 &7650345121030646997
 GameObject:
   m_ObjectHideFlags: 0

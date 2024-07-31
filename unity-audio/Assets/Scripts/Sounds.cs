@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Sounds : MonoBehaviour
 {
@@ -10,9 +11,19 @@ public class Sounds : MonoBehaviour
     public bool IsLanding = false;
     private GameObject running_grass, running_rock, landing_grass, landing_rock;
     AudioSource grass_fall, rock_fall;
+    [SerializeField] private AudioMixer audioMixer;
 
     void Start()
     {
+        float bgmVolume = Mathf.Lerp(-80f, 20f, PlayerPrefs.GetFloat("BGM_volume", 0));
+        float sfxVolume = Mathf.Lerp(-80f, 20f, PlayerPrefs.GetFloat("SFX_volume", 0));
+        audioMixer.SetFloat("BGM", bgmVolume);
+        audioMixer.SetFloat("SFX", sfxVolume);
+        Debug.Log("BGM_volume");
+        Debug.Log(Mathf.Log10(PlayerPrefs.GetFloat("BGM_volume", 0)) * 20);
+        Debug.Log("SFX_volume");
+        Debug.Log(Mathf.Log10(PlayerPrefs.GetFloat("SFX_volume", 0)) * 20);
+
         anim = GameObject.Find("ty").GetComponent<Animator>();
         running_grass = MyFind(this.gameObject, "footsteps_running_grass");
         running_rock = MyFind(this.gameObject, "footsteps_running_rock");
