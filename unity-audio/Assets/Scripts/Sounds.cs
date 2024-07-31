@@ -15,14 +15,14 @@ public class Sounds : MonoBehaviour
 
     void Start()
     {
-        float bgmVolume = Mathf.Lerp(-80f, 20f, PlayerPrefs.GetFloat("BGM_volume", 0));
-        float sfxVolume = Mathf.Lerp(-80f, 20f, PlayerPrefs.GetFloat("SFX_volume", 0));
+        float bgmVolume = 40 * Mathf.Log10(PlayerPrefs.GetFloat("BGM_volume", 0)) + 20;
+        float sfxVolume = 40 * Mathf.Log10(PlayerPrefs.GetFloat("SFX_volume", 0)) + 20;
         audioMixer.SetFloat("BGM", bgmVolume);
         audioMixer.SetFloat("SFX", sfxVolume);
         Debug.Log("BGM_volume");
-        Debug.Log(Mathf.Log10(PlayerPrefs.GetFloat("BGM_volume", 0)) * 20);
+        Debug.Log(bgmVolume);
         Debug.Log("SFX_volume");
-        Debug.Log(Mathf.Log10(PlayerPrefs.GetFloat("SFX_volume", 0)) * 20);
+        Debug.Log(sfxVolume);
 
         anim = GameObject.Find("ty").GetComponent<Animator>();
         running_grass = MyFind(this.gameObject, "footsteps_running_grass");

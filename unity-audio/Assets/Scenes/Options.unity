@@ -320,7 +320,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 295167288}
   m_HandleRect: {fileID: 1998254498}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
@@ -2347,8 +2347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 073c8429d4a1d7c418b907c5b250e0cc, type: 2}
-  BGM: {fileID: -7611948213261931209, guid: 073c8429d4a1d7c418b907c5b250e0cc, type: 2}
-  SFX: {fileID: -8882925387643871555, guid: 073c8429d4a1d7c418b907c5b250e0cc, type: 2}
   BGM_slider: {fileID: 1991990575}
   SFX_slider: {fileID: 266103124}
 --- !u!1 &1991990573
@@ -2437,10 +2435,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 850567140}
   m_HandleRect: {fileID: 1445595707}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.01
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UnityEditor
 using UnityEditor;
+#endif
 
 public class RandomModelEditorGenerator : MonoBehaviour
 {

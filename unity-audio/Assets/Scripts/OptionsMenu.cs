@@ -15,8 +15,8 @@ public class OptionsMenu : MonoBehaviour
     {
         toggle = transform.Find("InvertYToggle").GetComponent<Toggle>();
         toggle.isOn = PlayerPrefs.GetInt("isInverted", 0) == 1;
-        BGM_slider.value = PlayerPrefs.GetFloat("BGM_volume", 0);
-        SFX_slider.value = PlayerPrefs.GetFloat("SFX_volume", 0);
+        BGM_slider.value = PlayerPrefs.GetFloat("BGM_volume", 0.4);
+        SFX_slider.value = PlayerPrefs.GetFloat("SFX_volume", 0.4);
     }
     public void Back()
     {
@@ -25,8 +25,8 @@ public class OptionsMenu : MonoBehaviour
     public void Apply()
     {
 
-        float bgmVolume = Mathf.Lerp(-80f, 20f, BGM_slider.value);
-        float sfxVolume = Mathf.Lerp(-80f, 20f, SFX_slider.value);
+        float bgmVolume = 40 * Mathf.Log10(BGM_slider.value) + 20;
+        float sfxVolume = 40 * Mathf.Log10(SFX_slider.value) + 20;
 
         PlayerPrefs.SetInt("isInverted", toggle.isOn ? 1 : 0);
         PlayerPrefs.SetFloat("BGM_volume", BGM_slider.value);

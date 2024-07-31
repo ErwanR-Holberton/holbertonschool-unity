@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UnityEditor
 using UnityEditor;
 
 public class CreateIslandWTrees : MonoBehaviour
@@ -158,3 +159,5 @@ public class CreateIslandWTrees : MonoBehaviour
     }
 
 }
+
+#endif
