@@ -3,30 +3,34 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
+
+
 public class PlaneSelectionManager : MonoBehaviour
 {
-    public ARPlaneManager arPlaneManager;  // Reference to ARPlaneManager
-    public GameObject startButtonPrefab;   // Reference to the Start button prefab
-    private GameObject startButtonInstance; // Instance of the Start button
-    
-    public static ARPlane selectedPlane;// Static variable to store the selected ARPlane
+    public GameObject startButton;
+    public GameObject searchingText;
+    public Text logs;
+
+    private ARPlaneManager arPlaneManager;
+    private ARRaycastManager arRaycastManager;
+
+    public static ARPlane selectedPlane;
+    public Material planeMaterial;
+
     void Start()
     {
-        // Initialize ARPlaneManager
         arPlaneManager = GetComponent<ARPlaneManager>();
+        arRaycastManager = GetComponent<ARRaycastManager>();
     }
+
     void Update()
     {
         // Detect user touch and tap
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            // Get the touch position
             Vector2 touchPosition = Input.GetTouch(0).position;
             if (TryGetTappedPlane(touchPosition, out ARPlane plane))
-            {
-                // Plane successfully tapped, process selection
                 SelectPlane(plane);
-            }
         }
     }
 
@@ -35,8 +39,10 @@ public class PlaneSelectionManager : MonoBehaviour
         tappedPlane = null;
         // Perform a raycast on the ARPlane from the touch position
         List<ARRaycastHit> hits = new List<ARRaycastHit>();
-        if (arPlaneManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+        if (arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
+
+            logs.text = "hit";
             // Get the first plane hit by the raycast
             ARRaycastHit hit = hits[0];
             tappedPlane = arPlaneManager.GetPlane(hit.trackableId);
@@ -45,27 +51,42 @@ public class PlaneSelectionManager : MonoBehaviour
         }
         return false;
     }
+
     void SelectPlane(ARPlane plane)
     {
+        logs.text = "select plane";
         selectedPlane = plane;
-        // Disable detection of other planes
+
         DisableOtherPlanes(plane);
-        // Instantiate the Start button if it hasn't been created yet
-        if (startButtonInstance == null)
-        {
-            // Create the Start button in the center of the screen
-            startButtonInstance = Instantiate(startButtonPrefab, Vector3.zero, Quaternion.identity);
-            // Set the position of the button to be at the center of the screen
-            startButtonInstance.transform.SetParent(GameObject.Find("Canvas").transform, false);
-        }
+
+        startButton.SetActive(true);
+        searchingText.SetActive(false);
+        ApplyMaterialToSelectedPlane();
     }
+
     void DisableOtherPlanes(ARPlane selectedPlane)
     {
-        // Loop through all the detected planes
-        foreach (ARPlane plane in arPlaneManager.trackables)
+        foreach (ARPlane plane in arPlaneManager.trackables)// Loop through all the detected planes
             if (plane != selectedPlane) // Disable all planes except the selected one
                 plane.gameObject.SetActive(false);
-        // Disable plane detection
-        arPlaneManager.enabled = false;
+
+        arPlaneManager.enabled = false;  // Disable plane detection
     }
+
+    void ApplyMaterialToSelectedPlane()
+    {
+        if (selectedPlane != null)
+        {
+            MeshRenderer planeMeshRenderer = selectedPlane.GetComponent<MeshRenderer>();
+
+            if (planeMeshRenderer != null)
+                planeMeshRenderer.material = planeMaterial;
+            else
+                Debug.LogWarning("MeshRenderer not found on the selected plane.");
+        }
+        else
+            Debug.LogWarning("No plane selected.");
+    }
+
 }
+
