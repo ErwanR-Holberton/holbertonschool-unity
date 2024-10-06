@@ -17,6 +17,8 @@ public class PlaneSelectionManager : MonoBehaviour
     public static ARPlane selectedPlane;
     public Material planeMaterial;
 
+    public Start startScript;
+
     void Start()
     {
         arPlaneManager = GetComponent<ARPlaneManager>();
@@ -62,6 +64,7 @@ public class PlaneSelectionManager : MonoBehaviour
         startButton.SetActive(true);
         searchingText.SetActive(false);
         ApplyMaterialToSelectedPlane();
+        startScript.arPlane = selectedPlane;
     }
 
     void DisableOtherPlanes(ARPlane selectedPlane)
