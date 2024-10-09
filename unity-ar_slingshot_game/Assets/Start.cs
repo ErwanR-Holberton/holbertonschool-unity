@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.XR.ARFoundation;
 using Unity.Collections;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.XR.ARFoundation;
 
 public class Start : MonoBehaviour
 {
@@ -98,8 +99,11 @@ public class Start : MonoBehaviour
 
     public void Restart()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        /*
         DeleteAllInstantiatedObjects();
         startFunction();
+        */
     }
     public void CloseApp()
     {
