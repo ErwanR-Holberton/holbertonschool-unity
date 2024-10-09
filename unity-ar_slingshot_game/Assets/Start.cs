@@ -8,9 +8,12 @@ using UnityEngine.UI;
 public class Start : MonoBehaviour
 {
     public GameObject prefabToInstantiate;
+    public int number = 10;
 
     public ARPlane arPlane;
     public Text logs;
+
+    private List<GameObject> instantiatedObjects = new List<GameObject>();
 
     public void startFunction ()
     {
@@ -20,7 +23,6 @@ public class Start : MonoBehaviour
         // Convert NativeArray<Vector2> to Vector2[]
         Vector2[] planeBoundary = new Vector2[nativeBoundary.Length];
         nativeBoundary.CopyTo(planeBoundary);
-        logs.text = "" + planeBoundary[0] + " " + planeBoundary[1];
 
         if (planeBoundary.Length < 3)
         {
@@ -30,7 +32,7 @@ public class Start : MonoBehaviour
 
         List<int> indices = Triangulate(planeBoundary);
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < number; i++)
         {
             // Use center and size to ensure random points stay within the plane
             Vector3 randomPositionOnPlane = GetRandomPointInPolygon(planeBoundary, indices);
@@ -38,6 +40,10 @@ public class Start : MonoBehaviour
             worldPosition.y = arPlane.transform.position.y + 0.1f; // Set the y position to match the ARPlane's height
 
             GameObject instantiatedObject = Instantiate(prefabToInstantiate, worldPosition, Quaternion.identity);
+
+            Target_Move TargetPrefabScript = instantiatedObject.GetComponent<Target_Move>();
+            TargetPrefabScript.arPlane = arPlane;
+            instantiatedObjects.Add(instantiatedObject);
         }
     }
 
@@ -81,4 +87,23 @@ public class Start : MonoBehaviour
         float a = 1f - r1 - r2;
         return a * p1 + r1 * p2 + r2 * p3;
     }
+
+    public void DeleteAllInstantiatedObjects()
+    {
+        foreach (GameObject obj in instantiatedObjects)
+            if (obj != null)
+                Destroy(obj);
+        instantiatedObjects.Clear(); // Clear the list
+    }
+
+    public void Restart()
+    {
+        DeleteAllInstantiatedObjects();
+        startFunction();
+    }
+    public void CloseApp()
+    {
+        Application.Quit();
+    }
+
 }

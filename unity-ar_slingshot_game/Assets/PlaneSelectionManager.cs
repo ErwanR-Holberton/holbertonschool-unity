@@ -9,7 +9,6 @@ public class PlaneSelectionManager : MonoBehaviour
 {
     public GameObject startButton;
     public GameObject searchingText;
-    public Text logs;
 
     private ARPlaneManager arPlaneManager;
     private ARRaycastManager arRaycastManager;
@@ -43,8 +42,6 @@ public class PlaneSelectionManager : MonoBehaviour
         List<ARRaycastHit> hits = new List<ARRaycastHit>();
         if (arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
-
-            logs.text = "hit";
             // Get the first plane hit by the raycast
             ARRaycastHit hit = hits[0];
             tappedPlane = arPlaneManager.GetPlane(hit.trackableId);
@@ -56,7 +53,6 @@ public class PlaneSelectionManager : MonoBehaviour
 
     void SelectPlane(ARPlane plane)
     {
-        logs.text = "select plane";
         selectedPlane = plane;
 
         DisableOtherPlanes(plane);
