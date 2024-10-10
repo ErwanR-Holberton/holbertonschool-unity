@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1231661725415416844}
   m_Layer: 0
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3265a5192d3f9dc40b83406fd444468b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
-  maxTurnAngle: 20
   arPlane: {fileID: 0}

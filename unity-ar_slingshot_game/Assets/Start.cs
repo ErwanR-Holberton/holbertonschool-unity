@@ -9,12 +9,16 @@ using UnityEngine.XR.ARFoundation;
 public class Start : MonoBehaviour
 {
     public GameObject prefabToInstantiate;
+    public GameObject AmmoPrefab;
     public int number = 10;
 
     public ARPlane arPlane;
     public Text logs;
+    public Image[] ammoUI;
+    public GameObject[] ammoObject;
 
     private List<GameObject> instantiatedObjects = new List<GameObject>();
+    public int ammoCount = 5;
 
     public void startFunction ()
     {
@@ -108,6 +112,18 @@ public class Start : MonoBehaviour
     public void CloseApp()
     {
         Application.Quit();
+    }
+
+    public void ConsumeAmmo()
+    {
+        logs.text = "instanciating";
+        GameObject newAmmo = Instantiate(AmmoPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        newAmmo.GetComponent<AmmoBehavior>().logs = logs;
+        if (ammoCount <= 4 && ammoCount >= 0)
+            ammoUI[ammoCount].gameObject.SetActive(false);
+        if (ammoCount <= 4 && ammoCount >= 0)
+            ammoObject[ammoCount].SetActive(true);
+        ammoCount -= 1;
     }
 
 }

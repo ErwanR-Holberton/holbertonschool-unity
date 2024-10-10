@@ -17,7 +17,6 @@ public class Target_Move : MonoBehaviour
     private float currentDirection;      // Current Y-axis rotation in degrees
 
     private Text logs;
-    private int count = 0;
     private void Start()
     {
         logs = GameObject.Find("Textlog").GetComponent<Text>();
@@ -63,12 +62,6 @@ public class Target_Move : MonoBehaviour
             return arPlane.transform.TransformPoint(localPosition);  // Keep the object flat on the plane (lock Y-axis to 0)
         else
         {
-            // If outside, cancel the movement
-            if (count == 0)
-            {
-                count += 1;
-                logs.text = "outside";
-            }
             currentDirection += 180f;
             currentDirection += UnityEngine.Random.Range(-maxTurnAngle *2, maxTurnAngle*2);
             return transform.position;
