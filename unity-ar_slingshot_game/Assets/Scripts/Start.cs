@@ -10,41 +10,44 @@ public class Start : MonoBehaviour
 {
     public GameObject prefabToInstantiate;
     public GameObject AmmoPrefab;
-    public int number = 10;
+    public GameObject playAgainButon;
+    public int number = 5;
+    [HideInInspector] public int score = 0;
 
     public ARPlane arPlane;
     public Text logs;
     public Image[] ammoUI;
-    public GameObject[] ammoObject;
 
     private List<GameObject> instantiatedObjects = new List<GameObject>();
-    public int ammoCount = 5;
+    public int ammoCount = 7;
+    public Text scoreText;
+
 
     public void startFunction ()
     {
-        // Get the boundary of the ARPlane (NativeArray<Vector2>)
-        NativeArray<Vector2> nativeBoundary = arPlane.boundary;
+        DeleteAllInstantiatedObjects();
+        score = 0;
+        updateScore(0);
+        for (ammoCount = 0; ammoCount != 7; ammoCount++)
+            ammoUI[ammoCount].gameObject.SetActive(true);
 
-        // Convert NativeArray<Vector2> to Vector2[]
-        Vector2[] planeBoundary = new Vector2[nativeBoundary.Length];
-        nativeBoundary.CopyTo(planeBoundary);
-
-        if (planeBoundary.Length < 3)
-        {
-            Debug.LogWarning("ARPlane boundary is too small or not yet detected.");
-            return;
-        }
+        Spawn(number);
+        ConsumeAmmo();
+    }
+    public void Spawn(int quantity)
+    {
+        Vector2[] planeBoundary = new Vector2[arPlane.boundary.Length];
+        arPlane.boundary.CopyTo(planeBoundary);
 
         List<int> indices = Triangulate(planeBoundary);
-
-        for (int i = 0; i < number; i++)
+        for (int i = 0; i < quantity; i++)
         {
             // Use center and size to ensure random points stay within the plane
             Vector3 randomPositionOnPlane = GetRandomPointInPolygon(planeBoundary, indices);
             Vector3 worldPosition = arPlane.transform.TransformPoint(randomPositionOnPlane);
             worldPosition.y = arPlane.transform.position.y + 0.1f; // Set the y position to match the ARPlane's height
 
-            GameObject instantiatedObject = Instantiate(prefabToInstantiate, worldPosition, Quaternion.identity);
+            GameObject instantiatedObject = Instantiate(prefabToInstantiate, worldPosition, Quaternion.identity, arPlane.transform);
 
             Target_Move TargetPrefabScript = instantiatedObject.GetComponent<Target_Move>();
             TargetPrefabScript.arPlane = arPlane;
@@ -104,10 +107,11 @@ public class Start : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        /*
+    }
+    public void playAgain()
+    {
         DeleteAllInstantiatedObjects();
         startFunction();
-        */
     }
     public void CloseApp()
     {
@@ -116,14 +120,22 @@ public class Start : MonoBehaviour
 
     public void ConsumeAmmo()
     {
-        logs.text = "instanciating";
-        GameObject newAmmo = Instantiate(AmmoPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        newAmmo.GetComponent<AmmoBehavior>().logs = logs;
-        if (ammoCount <= 4 && ammoCount >= 0)
+        if (ammoCount <= 6 && ammoCount >= 0)
             ammoUI[ammoCount].gameObject.SetActive(false);
-        if (ammoCount <= 4 && ammoCount >= 0)
-            ammoObject[ammoCount].SetActive(true);
+        if (ammoCount == 0)
+        {
+            playAgainButon.SetActive(true);
+            return;
+        }
+        GameObject ammoObject = Instantiate(AmmoPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        instantiatedObjects.Add(ammoObject);
         ammoCount -= 1;
+    }
+
+    public void updateScore(int value)
+    {
+        score += value;
+        scoreText.text = "" + score;
     }
 
 }
