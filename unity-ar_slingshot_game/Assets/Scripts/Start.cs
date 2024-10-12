@@ -5,10 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation;
+using System;
 
 public class Start : MonoBehaviour
 {
     public GameObject prefabToInstantiate;
+    public GameObject towerPrefab;
     public GameObject AmmoPrefab;
     public GameObject playAgainButon;
     public int number = 5;
@@ -22,6 +24,7 @@ public class Start : MonoBehaviour
     public int ammoCount = 7;
     public Text scoreText;
 
+    GameObject Tower;
 
     public void startFunction ()
     {
@@ -40,6 +43,8 @@ public class Start : MonoBehaviour
         arPlane.boundary.CopyTo(planeBoundary);
 
         List<int> indices = Triangulate(planeBoundary);
+        //genTower(indices, planeBoundary);
+
         for (int i = 0; i < quantity; i++)
         {
             // Use center and size to ensure random points stay within the plane
@@ -53,6 +58,15 @@ public class Start : MonoBehaviour
             TargetPrefabScript.arPlane = arPlane;
             instantiatedObjects.Add(instantiatedObject);
         }
+    }
+    void genTower(List<int> indices, Vector2[] planeBoundary)
+    {
+        Vector3 randomPositionOnPlane = GetRandomPointInPolygon(planeBoundary, indices);
+        Vector3 worldPosition = arPlane.transform.TransformPoint(randomPositionOnPlane);
+        worldPosition.y = arPlane.transform.position.y + 0.1f;
+
+        Tower = Instantiate(towerPrefab, worldPosition, Quaternion.identity);
+        instantiatedObjects.Add(Tower);
     }
 
     List<int> Triangulate(Vector2[] boundary)
@@ -70,7 +84,7 @@ public class Start : MonoBehaviour
     Vector3 GetRandomPointInPolygon(Vector2[] boundary, List<int> indices)
     {
         // Randomly pick a triangle from the triangulated polygon
-        int triangleIndex = Random.Range(0, indices.Count / 3) * 3;
+        int triangleIndex = UnityEngine.Random.Range(0, indices.Count / 3) * 3;
 
         // Get the vertices of the chosen triangle
         Vector2 p1 = boundary[indices[triangleIndex]];
@@ -83,8 +97,8 @@ public class Start : MonoBehaviour
 
     Vector2 GetRandomPointInTriangle(Vector2 p1, Vector2 p2, Vector2 p3)
     {
-        float r1 = Random.Range(0f, 1f);
-        float r2 = Random.Range(0f, 1f);
+        float r1 = UnityEngine.Random.Range(0f, 1f);
+        float r2 = UnityEngine.Random.Range(0f, 1f);
 
         if (r1 + r2 > 1f)
         {

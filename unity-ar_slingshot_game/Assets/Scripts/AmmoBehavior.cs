@@ -164,14 +164,12 @@ public class AmmoBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Target"))
         {
-            logs.text = "hit target";
             StartScript.updateScore(10);
             collision.gameObject.SetActive(false);
             TriggerNext();
         }
         else if (collision.gameObject.CompareTag("Plane"))
         {
-            logs.text = "hit plane";
             TriggerNext();
         }
     }
@@ -186,7 +184,6 @@ public class AmmoBehavior : MonoBehaviour
 
     private void disableSelf()
     {
-        logs.text = "fell";
         TriggerNext();
         gameObject.SetActive(false);
     }
