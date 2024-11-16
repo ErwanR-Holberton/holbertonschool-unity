@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public void Start()
-    {
-        Debug.Log("start trap");
-    }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log($"Hit {other.gameObject.name}");
