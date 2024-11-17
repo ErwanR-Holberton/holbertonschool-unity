@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PinScore : MonoBehaviour
 {
-    private float fallenThreshold = 0.4f;
+    private float fallenThreshold = 0.3f;
     private bool hasFallen = false;
     private ScoreManager ScoreManager;
     private Vector3 originalPosition;
@@ -22,13 +22,16 @@ public class PinScore : MonoBehaviour
 
         if (alignment > fallenThreshold && !hasFallen)
         {
-            Debug.Log($"Hit {alignment} < {fallenThreshold}");
             hasFallen = true;
             ScoreManager.AddScore(1);
         }
         if (Vector3.Distance(transform.position, originalPosition) > 0.5f && !hasFallen)
         {
-            Debug.Log($"fell position");
+            hasFallen = true;
+            ScoreManager.AddScore(1);
+        }
+        if (transform.position.y < -10 && !hasFallen)
+        {
             hasFallen = true;
             ScoreManager.AddScore(1);
         }
